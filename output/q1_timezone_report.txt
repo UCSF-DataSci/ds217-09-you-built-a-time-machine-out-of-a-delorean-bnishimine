@@ -1,0 +1,10 @@
+Original Timezone: The original data did not have timezone information and was considered naive datetime data.
+
+Localization Method: To handle timezone awareness, I localized the datetime data to UTC using the tz_localize('UTC') method. This step is crucial as it establishes a consistent reference point for all datetime values, ensuring that they are interpreted correctly across different time zones.
+
+Conversion: After localizing to UTC, I converted the datetime data to the 'US/Eastern' timezone using the tz_convert('US/Eastern') method. This conversion allows for the representation of datetime values in a timezone that is relevant for clinical trials conducted in the Eastern United States.
+
+DST Handling: One of the key challenges with timezone conversions is handling daylight saving time (DST) transitions. By using UTC as the base timezone, I avoided the ambiguities associated with DST, as UTC does not observe daylight saving time. This means that any datetime values stored in UTC remain consistent throughout the year, regardless of local time changes.
+
+Example: For instance, a datetime value of '2023-03-12 10:00:00' in UTC converts to '2023-03-12 05:00:00' in US/Eastern before the DST transition, and '2023-03-12 06:00:00' after the transition. This illustrates how the conversion accounts for the one-hour shift due to DST.
+
